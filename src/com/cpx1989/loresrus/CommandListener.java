@@ -28,7 +28,7 @@ public class CommandListener implements Listener {
 			} else if (args[0].equalsIgnoreCase("/cancel")){
 				LoresRUs.plist.remove(p);
 				LoresRUs.lbarray.remove(p);
-				p.sendMessage(LoresRUs.getPrefix() + "We're sorry you didnt like your lore.");
+				p.sendMessage(Globals.Prefix + "We're sorry you didnt like your lore.");
 			} else if (args[0].equalsIgnoreCase("/help")){
 				p.sendMessage(ChatColor.GRAY + "Type the folowing to get started:");
 				p.sendMessage(ChatColor.GRAY + "   /name <string> - " + ChatColor.YELLOW + "Sets the items name");
@@ -41,8 +41,8 @@ public class CommandListener implements Listener {
 					e.setCancelled(false);
 					return;
 				}
-				p.sendMessage(LoresRUs.getPrefix() + "You have entered an incorrect command!");
-				p.sendMessage(LoresRUs.getPrefix() + "If you would like to leave the creator please type '/cancel'");
+				p.sendMessage(Globals.Prefix + "You have entered an incorrect command!");
+				p.sendMessage(Globals.Prefix + "If you would like to leave the creator please type '/cancel'");
 			}
 		}
 	}

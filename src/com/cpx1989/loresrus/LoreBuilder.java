@@ -51,24 +51,24 @@ public class LoreBuilder {
 		if (useKIC()){
 			Boolean result = LoresRUs.instance.kic.checkIsOffending(s, p, "Lores-R-Us");
 			if (result){
-				p.sendMessage(LoresRUs.getPrefix() + "Name contains an offending word!");
+				p.sendMessage(Globals.Prefix + "Name contains an offending word!");
 				return;
 			}
 			s = checkColor(p, ChatColor.translateAlternateColorCodes('&',  s));
 			name = s;
-			p.sendMessage(LoresRUs.getPrefix() + "Set name to: " + ChatColor.DARK_AQUA + s);
+			p.sendMessage(Globals.Prefix + "Set name to: " + ChatColor.DARK_AQUA + s);
 			if (dialog){
-				p.sendMessage(ChatColor.GRAY + "  - Current Balance: " + ChatColor.GREEN + LoresRUs.economy.getBalance(p) + ChatColor.GRAY + " Kolbucks ");
-				p.sendMessage(ChatColor.GRAY + "  - Current Cost: "+ ChatColor.RED + getLetterAmount()*LoresRUs.perLetter + ChatColor.GRAY + " Kolbucks");
+				p.sendMessage(ChatColor.GRAY + "  - Current Balance: " + ChatColor.GREEN + LoresRUs.economy.getBalance(p) + ChatColor.GRAY + " " + Globals.Economy_Name + " ");
+				p.sendMessage(ChatColor.GRAY + "  - Current Cost: "+ ChatColor.RED + getLetterAmount()*Globals.Price_Per_Letter + ChatColor.GRAY + " " + Globals.Economy_Name + "");
 				p.sendMessage(ChatColor.GRAY + "  - If you are done type " + ChatColor.YELLOW + "/done" + ChatColor.GRAY + " to finish or " + ChatColor.YELLOW + "/cancel" + ChatColor.GRAY + " to cancel.");
 			}
 		} else {
 			s = checkColor(p, ChatColor.translateAlternateColorCodes('&',  s));
 			name = s;
-			p.sendMessage(LoresRUs.getPrefix() + "Set name to: " + ChatColor.DARK_AQUA + s);
+			p.sendMessage(Globals.Prefix + "Set name to: " + ChatColor.DARK_AQUA + s);
 			if (dialog){
-				p.sendMessage(ChatColor.GRAY + "  - Current Balance: " + ChatColor.GREEN + LoresRUs.economy.getBalance(p) + ChatColor.GRAY + " Kolbucks ");
-				p.sendMessage(ChatColor.GRAY + "  - Current Cost: "+ ChatColor.RED + getLetterAmount()*LoresRUs.perLetter + ChatColor.GRAY + " Kolbucks");
+				p.sendMessage(ChatColor.GRAY + "  - Current Balance: " + ChatColor.GREEN + LoresRUs.economy.getBalance(p) + ChatColor.GRAY + " " + Globals.Economy_Name + " ");
+				p.sendMessage(ChatColor.GRAY + "  - Current Cost: "+ ChatColor.RED + getLetterAmount()*Globals.Price_Per_Letter + ChatColor.GRAY + " " + Globals.Economy_Name + "");
 				p.sendMessage(ChatColor.GRAY + "  - If you are done type " + ChatColor.YELLOW + "/done" + ChatColor.GRAY + " to finish or " + ChatColor.YELLOW + "/cancel" + ChatColor.GRAY + " to cancel.");
 			}
 		}
@@ -80,27 +80,27 @@ public class LoreBuilder {
 			if (useKIC()){
 				Boolean result = LoresRUs.instance.kic.checkIsOffending(s, p, "Lores-R-Us");
 				if (result){
-					p.sendMessage(LoresRUs.getPrefix() + "Name contains an offending word!");
+					p.sendMessage(Globals.Prefix + "Name contains an offending word!");
 					return;
 				}
 				s = checkColor(p, ChatColor.translateAlternateColorCodes('&',  s));
 				meta.add(s);
-				p.sendMessage(LoresRUs.getPrefix() + "Added line: " + ChatColor.DARK_AQUA + s);
+				p.sendMessage(Globals.Prefix + "Added line: " + ChatColor.DARK_AQUA + s);
 				if (dialog){
-					p.sendMessage(ChatColor.GRAY + "  - Current Balance: " + ChatColor.GREEN + LoresRUs.economy.getBalance(p) + ChatColor.GRAY + " Kolbucks Current Cost: "+ ChatColor.RED + getLetterAmount()*LoresRUs.perLetter + ChatColor.GRAY + " Kolbucks");
+					p.sendMessage(ChatColor.GRAY + "  - Current Balance: " + ChatColor.GREEN + LoresRUs.economy.getBalance(p) + ChatColor.GRAY + " " + Globals.Economy_Name + " Current Cost: "+ ChatColor.RED + getLetterAmount()*Globals.Price_Per_Letter + ChatColor.GRAY + " " + Globals.Economy_Name + "");
 					p.sendMessage(ChatColor.GRAY + "  - If you are done type " + ChatColor.YELLOW + "/done" + ChatColor.GRAY + " to finish or " + ChatColor.YELLOW + "/cancel" + ChatColor.GRAY + " to cancel.");
 				}
 			} else {
 				s = checkColor(p, ChatColor.translateAlternateColorCodes('&',  s));
 				meta.add(s);
-				p.sendMessage(LoresRUs.getPrefix() + "Added line: " + ChatColor.DARK_AQUA + s);
+				p.sendMessage(Globals.Prefix + "Added line: " + ChatColor.DARK_AQUA + s);
 				if (dialog){
-					p.sendMessage(ChatColor.GRAY + "  - Current Balance: " + ChatColor.GREEN + LoresRUs.economy.getBalance(p) + ChatColor.GRAY + " Kolbucks Current Cost: "+ ChatColor.RED + getLetterAmount()*LoresRUs.perLetter + ChatColor.GRAY + " Kolbucks");
+					p.sendMessage(ChatColor.GRAY + "  - Current Balance: " + ChatColor.GREEN + LoresRUs.economy.getBalance(p) + ChatColor.GRAY + " " + Globals.Economy_Name + " Current Cost: "+ ChatColor.RED + getLetterAmount()*Globals.Price_Per_Letter + ChatColor.GRAY + " " + Globals.Economy_Name + "");
 					p.sendMessage(ChatColor.GRAY + "  - If you are done type " + ChatColor.YELLOW + "/done" + ChatColor.GRAY + " to finish or " + ChatColor.YELLOW + "/cancel" + ChatColor.GRAY + " to cancel.");
 				}
 			}
 		} else {
-			p.sendMessage(LoresRUs.getPrefix() + "You have reached the maximum amount of lines of metadata!");
+			p.sendMessage(Globals.Prefix + "You have reached the maximum amount of lines of metadata!");
 		}
 	}
 	
@@ -110,7 +110,7 @@ public class LoreBuilder {
 			if(p.getItemInHand().getAmount() == 1){
 				if (name != null && meta.size() > 0){
 					if (useEco()){
-						if(LoresRUs.economy.getBalance(p) >= getLetterAmount()*LoresRUs.perLetter){
+						if(LoresRUs.economy.getBalance(p) >= getLetterAmount()*Globals.Price_Per_Letter){
 							ItemStack is = p.getItemInHand();
 							ItemMeta temp = is.getItemMeta();
 							temp.setDisplayName("temporary");
@@ -124,13 +124,13 @@ public class LoreBuilder {
 							p.updateInventory();
 							LoresRUs.plist.remove(p);
 							LoresRUs.lbarray.remove(p);
-							p.sendMessage(LoresRUs.getPrefix() + "You were charged: " + ChatColor.GREEN + getLetterAmount()*LoresRUs.perLetter + ChatColor.GRAY + " Kolbucks");
+							p.sendMessage(Globals.Prefix + "You were charged: " + ChatColor.GREEN + getLetterAmount()*Globals.Price_Per_Letter + ChatColor.GRAY + " " + Globals.Economy_Name + "");
 							p.sendMessage(ChatColor.GRAY + "  - Enjoy your new lore!");
-							LoresRUs.economy.withdrawPlayer(p, getLetterAmount()*LoresRUs.perLetter);
+							LoresRUs.economy.withdrawPlayer(p, getLetterAmount()*Globals.Price_Per_Letter);
 						} else {
-							p.sendMessage(LoresRUs.getPrefix() + "You do not have enough for this lore!");
-							p.sendMessage(ChatColor.GRAY + "  - Current Balance: " + ChatColor.GREEN + LoresRUs.economy.getBalance(p) + ChatColor.GRAY + " Kolbucks");
-							p.sendMessage(ChatColor.GRAY + "  - Current Cost: "+ ChatColor.RED + getLetterAmount()*LoresRUs.perLetter + ChatColor.GRAY + " Kolbucks");
+							p.sendMessage(Globals.Prefix + "You do not have enough for this lore!");
+							p.sendMessage(ChatColor.GRAY + "  - Current Balance: " + ChatColor.GREEN + LoresRUs.economy.getBalance(p) + ChatColor.GRAY + " " + Globals.Economy_Name + "");
+							p.sendMessage(ChatColor.GRAY + "  - Current Cost: "+ ChatColor.RED + getLetterAmount()*Globals.Price_Per_Letter + ChatColor.GRAY + " " + Globals.Economy_Name + "");
 						}
 					} else {
 						ItemStack is = p.getItemInHand();
@@ -146,12 +146,12 @@ public class LoreBuilder {
 						p.updateInventory();
 						LoresRUs.plist.remove(p);
 						LoresRUs.lbarray.remove(p);
-						p.sendMessage(LoresRUs.getPrefix() + "You were charged: " + ChatColor.GREEN + getLetterAmount()*LoresRUs.perLetter + ChatColor.GRAY + " Kolbucks");
+						p.sendMessage(Globals.Prefix + "You were charged: " + ChatColor.GREEN + getLetterAmount()*Globals.Price_Per_Letter + ChatColor.GRAY + " " + Globals.Economy_Name + "");
 						p.sendMessage(ChatColor.GRAY + "  - Enjoy your new lore!");
 					}
 				} else if (name != null){
 					if (useEco()){
-						if(LoresRUs.economy.getBalance(p) >= getLetterAmount()){
+						if(LoresRUs.economy.getBalance(p) >= getLetterAmount()*Globals.Price_Per_Letter){
 							ItemStack is = p.getItemInHand();
 							p.getInventory().remove(is);
 							ItemMeta im = is.getItemMeta();
@@ -160,13 +160,13 @@ public class LoreBuilder {
 							p.getInventory().addItem(is);
 							LoresRUs.plist.remove(p);
 							LoresRUs.lbarray.remove(p);
-							p.sendMessage(LoresRUs.getPrefix() + "You were charged: " + ChatColor.GREEN + getLetterAmount()*LoresRUs.perLetter + ChatColor.GRAY + " Kolbucks");
+							p.sendMessage(Globals.Prefix + "You were charged: " + ChatColor.GREEN + getLetterAmount()*Globals.Price_Per_Letter + ChatColor.GRAY + " " + Globals.Economy_Name + "");
 							p.sendMessage(ChatColor.GRAY + "  - Enjoy your new lore!");
-							LoresRUs.economy.withdrawPlayer(p, getLetterAmount()*LoresRUs.perLetter);
+							LoresRUs.economy.withdrawPlayer(p, getLetterAmount()*Globals.Price_Per_Letter);
 						} else {
-							p.sendMessage(LoresRUs.getPrefix() + "You do not have enough for this lore!");
-							p.sendMessage(ChatColor.GRAY + "  - Current Balance: " + ChatColor.GREEN + LoresRUs.economy.getBalance(p) + ChatColor.GRAY + " Kolbucks ");
-							p.sendMessage(ChatColor.GRAY + "  - Current Cost: "+ ChatColor.RED + getLetterAmount()*LoresRUs.perLetter + ChatColor.GRAY + " Kolbucks");
+							p.sendMessage(Globals.Prefix + "You do not have enough for this lore!");
+							p.sendMessage(ChatColor.GRAY + "  - Current Balance: " + ChatColor.GREEN + LoresRUs.economy.getBalance(p) + ChatColor.GRAY + " " + Globals.Economy_Name + " ");
+							p.sendMessage(ChatColor.GRAY + "  - Current Cost: "+ ChatColor.RED + getLetterAmount()*Globals.Price_Per_Letter + ChatColor.GRAY + " " + Globals.Economy_Name + "");
 						}
 					} else {
 						ItemStack is = p.getItemInHand();
@@ -177,11 +177,11 @@ public class LoreBuilder {
 						p.getInventory().addItem(is);
 						LoresRUs.plist.remove(p);
 						LoresRUs.lbarray.remove(p);
-						p.sendMessage(LoresRUs.getPrefix() + "Enjoy your new lore!");
+						p.sendMessage(Globals.Prefix + "Enjoy your new lore!");
 					}
 				} else if (meta.size() > 0){
 					if (useEco()){
-						if(LoresRUs.economy.getBalance(p) >= getLetterAmount()){
+						if(LoresRUs.economy.getBalance(p) >= getLetterAmount()*Globals.Price_Per_Letter){
 							ItemStack is = p.getItemInHand();
 							p.getInventory().remove(is);
 							ItemMeta im = is.getItemMeta();
@@ -190,13 +190,13 @@ public class LoreBuilder {
 							p.getInventory().addItem(is);
 							LoresRUs.plist.remove(p);
 							LoresRUs.lbarray.remove(p);
-							p.sendMessage(LoresRUs.getPrefix() + "You were charged: " + ChatColor.GREEN + getLetterAmount()*LoresRUs.perLetter + ChatColor.GRAY + " Kolbucks");
+							p.sendMessage(Globals.Prefix + "You were charged: " + ChatColor.GREEN + getLetterAmount()*Globals.Price_Per_Letter + ChatColor.GRAY + " " + Globals.Economy_Name + "");
 							p.sendMessage(ChatColor.GRAY + "  - Enjoy your new lore!");
-							LoresRUs.economy.withdrawPlayer(p, getLetterAmount()*LoresRUs.perLetter);
+							LoresRUs.economy.withdrawPlayer(p, getLetterAmount()*Globals.Price_Per_Letter);
 						} else {
-							p.sendMessage(LoresRUs.getPrefix() + "You do not have enough for this lore!");
-							p.sendMessage(ChatColor.GRAY + "  - Current Balance: " + ChatColor.GREEN + LoresRUs.economy.getBalance(p) + ChatColor.GRAY + " Kolbucks");
-							p.sendMessage(ChatColor.GRAY + "  - Current Cost: "+ ChatColor.RED + getLetterAmount()*LoresRUs.perLetter + ChatColor.GRAY + " Kolbucks");
+							p.sendMessage(Globals.Prefix + "You do not have enough for this lore!");
+							p.sendMessage(ChatColor.GRAY + "  - Current Balance: " + ChatColor.GREEN + LoresRUs.economy.getBalance(p) + ChatColor.GRAY + " " + Globals.Economy_Name + "");
+							p.sendMessage(ChatColor.GRAY + "  - Current Cost: "+ ChatColor.RED + getLetterAmount()*Globals.Price_Per_Letter + ChatColor.GRAY + " " + Globals.Economy_Name + "");
 						}
 					} else {
 						ItemStack is = p.getItemInHand();
@@ -207,17 +207,17 @@ public class LoreBuilder {
 						p.getInventory().addItem(is);
 						LoresRUs.plist.remove(p);
 						LoresRUs.lbarray.remove(p);
-						p.sendMessage(LoresRUs.getPrefix() + "You were charged: " + ChatColor.GREEN + getLetterAmount()*LoresRUs.perLetter + ChatColor.GRAY + " Kolbucks");
+						p.sendMessage(Globals.Prefix + "You were charged: " + ChatColor.GREEN + getLetterAmount()*Globals.Price_Per_Letter + ChatColor.GRAY + " " + Globals.Economy_Name + "");
 						p.sendMessage(ChatColor.GRAY + "  - Enjoy your new lore!");
 					}
 				} else {
-					p.sendMessage(LoresRUs.getPrefix() + "No Name or Metadata specified!");
+					p.sendMessage(Globals.Prefix + "No Name or Metadata specified!");
 				}
 			} else {
-				p.sendMessage(LoresRUs.getPrefix() + "You may only apply lores to one item at a time!");
+				p.sendMessage(Globals.Prefix + "You may only apply lores to one item at a time!");
 			}
 		} else {
-			p.sendMessage(LoresRUs.getPrefix() + "You must have an item in your hand to apply lores!");
+			p.sendMessage(Globals.Prefix + "You must have an item in your hand to apply lores!");
 		}
 	}
 	

@@ -29,7 +29,6 @@ public class LoresRUs extends JavaPlugin {
 	static FileConfiguration cfg;
 	public static Economy economy = null;
 	public KeepItClean kic = null;
-	static int perLetter = 1;
 	static List<Player> plist = new ArrayList<Player>();
 	static Map<Player, LoreBuilder> lbarray = new HashMap<Player, LoreBuilder>();
 	
@@ -48,8 +47,14 @@ public class LoresRUs extends JavaPlugin {
 		cfg.options().copyDefaults(true);
 		saveConfig();
 		
+		//get prefix
+
+		//global prefix
+		String s = cfg.getString("Primary_Color") + cfg.getString("Prefix") + cfg.getString("Secondary_Color")+ " ";
+		Globals.Prefix = ChatColor.translateAlternateColorCodes('&', s);
+		
 		//log authors
-		logger.info(getPrefix() + "Plugin by " + pluginyml.getAuthors());
+		logger.info(Globals.Prefix + "Plugin by " + pluginyml.getAuthors());
 		
 		//register command
 		getCommand("plore").setExecutor(new LoreCommand());
@@ -60,15 +65,19 @@ public class LoresRUs extends JavaPlugin {
 		
 		//setup vault
 		if (setupEconomy()){
-			logger.info(getPrefix() + "Hooked into Vault!");
+			logger.info(Globals.Prefix + "Hooked into Vault!");
 		}
 		
 		if (hookKIC()){
-			logger.info(getPrefix() + "Hooked into KeepItClean!");
+			logger.info(Globals.Prefix + "Hooked into KeepItClean!");
 		}
 		
 		//register perLetter cost
-		perLetter = cfg.getInt("perletter");
+		Globals.Price_Per_Letter = cfg.getDouble("Price_Per_Letter");
+		
+		//economy name
+		Globals.Economy_Name = cfg.getString("Economy_Name");
+		
 
 	}
 
@@ -82,13 +91,8 @@ public class LoresRUs extends JavaPlugin {
 		logger.info("Plugin disabled!");
 	}
 	
-	public static String getPrefix(){
-		String s = cfg.getString("pricolor") + cfg.getString("prefix") + cfg.getString("seccolor")+ " ";
-		return ChatColor.translateAlternateColorCodes('&', s);
-	}
-	
 	private boolean setupEconomy(){
-        RegisteredServiceProvider<Economy> economyProvider = getServer().getServicesManager().getRegistration(net.milkbowl.vault.economy.Economy.class);
+        RegisteredServiceProvider<Economy> economyProvider = getServer().getServicesManager().getRegistration(Economy.class);
         if (economyProvider != null) {
             economy = economyProvider.getProvider();
         }
@@ -99,4 +103,10 @@ public class LoresRUs extends JavaPlugin {
 		return instance;
 	}
 	
+}
+
+class Globals {
+	public static String Prefix = ChatColor.RED +  "[Lores 'R' Us] "+ ChatColor.GRAY;
+	public static double Price_Per_Letter = 1.0;
+	public static String Economy_Name = "Dollar(s)";
 }

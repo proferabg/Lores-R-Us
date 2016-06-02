@@ -11,7 +11,7 @@ public class LoreCommand implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
 		if(args.length == 0){
-			sender.sendMessage(LoresRUs.getPrefix() + "Invalid Arguments! Try " + ChatColor.RED + "/plore create");
+			sender.sendMessage(Globals.Prefix + "Invalid Arguments! Try " + ChatColor.RED + "/plore create");
 		} else if(args.length == 1){
 			if (sender instanceof Player){
 				Player p = (Player) sender;
@@ -28,14 +28,14 @@ public class LoreCommand implements CommandExecutor {
 						LoreBuilder lb = new LoreBuilder(p);
 						LoresRUs.lbarray.put(p, lb);
 					} else {
-						p.sendMessage(LoresRUs.getPrefix() + ChatColor.RED + "You do not have permission to use this command!");
+						p.sendMessage(Globals.Prefix + ChatColor.RED + "You do not have permission to use this command!");
 					}
 				} else if (args[0].equalsIgnoreCase("reload")){
 					if (p.hasPermission("loresrus.reload")){
 						LoresRUs.getInstance().reloadConfig();
-						p.sendMessage(LoresRUs.getPrefix() + "Config reloaded!");
+						p.sendMessage(Globals.Prefix + "Config reloaded!");
 					} else {
-						p.sendMessage(LoresRUs.getPrefix() + ChatColor.RED + "You do not have permission to use this command!");
+						p.sendMessage(Globals.Prefix + ChatColor.RED + "You do not have permission to use this command!");
 					}
 				} else if (args[0].equalsIgnoreCase("about")){
 					p.sendMessage("");
@@ -53,10 +53,10 @@ public class LoreCommand implements CommandExecutor {
 					p.sendMessage(ChatColor.DARK_AQUA + "   /plore help - " + ChatColor.GRAY + "Shows this page!");
 					p.sendMessage("");
 				} else {
-					p.sendMessage(LoresRUs.getPrefix() + ChatColor.RED + "Invalid Arguments!");
+					p.sendMessage(Globals.Prefix + ChatColor.RED + "Invalid Arguments!");
 				}
 			} else {
-				sender.sendMessage(LoresRUs.getPrefix() + "Must be in-game to use command!");
+				sender.sendMessage(Globals.Prefix + "Must be in-game to use command!");
 			}
 		} else if (args.length > 1){
 			if (sender instanceof Player){
@@ -71,7 +71,7 @@ public class LoreCommand implements CommandExecutor {
 						lb.setName(s, false);
 						lb.build();
 					} else {
-						p.sendMessage(LoresRUs.getPrefix() + ChatColor.RED + "You do not have permission to use this command!");
+						p.sendMessage(Globals.Prefix + ChatColor.RED + "You do not have permission to use this command!");
 					}
 				} else if (args[0].equalsIgnoreCase("meta")){
 					if (p.hasPermission("loresrus.meta")){
@@ -86,13 +86,13 @@ public class LoreCommand implements CommandExecutor {
 						}
 						lb.build();
 					} else {
-						p.sendMessage(LoresRUs.getPrefix() + ChatColor.RED + "You do not have permission to use this command!");
+						p.sendMessage(Globals.Prefix + ChatColor.RED + "You do not have permission to use this command!");
 					}
 				} else {
-					p.sendMessage(LoresRUs.getPrefix() + ChatColor.RED + "Invalid Arguments!");
+					p.sendMessage(Globals.Prefix + ChatColor.RED + "Invalid Arguments!");
 				}
 			} else {
-				sender.sendMessage(LoresRUs.getPrefix() + "Must be in-game to use command!");
+				sender.sendMessage(Globals.Prefix + "Must be in-game to use command!");
 			}
 		}
 		return false;
