@@ -1,0 +1,11 @@
+name : Lores-R-Us
+version : 1.2
+authors: [CPx1989]
+description: Just another lore plugin...
+main: com.cpx1989.loresrus.LoresRUs
+depend:
+  - KeepItClean
+  - Vault
+commands:
+  plore:
+    description: Just another lore command
