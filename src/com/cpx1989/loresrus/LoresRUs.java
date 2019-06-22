@@ -17,7 +17,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.scriptjunkie.KeepItClean.KeepItClean;
+import com.gimmecraft.keepitclean.KeepItClean;
 
 
 

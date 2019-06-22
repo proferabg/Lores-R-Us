@@ -1,10 +1,11 @@
 name : Lores-R-Us
 version : 1.2
+api-version: 1.14
 authors: [CPx1989]
 description: Just another lore plugin...
 main: com.cpx1989.loresrus.LoresRUs
 depend:
-  - KeepItClean
+  - NetSync
   - Vault
 commands:
   plore:
