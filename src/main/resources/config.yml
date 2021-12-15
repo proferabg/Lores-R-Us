@@ -1,0 +1,8 @@
+Prefix: [Lores 'R' Us]
+Primary_Color: '&c'
+Secondary_Color: '&7'
+Price_Per_Letter: 1.0
+Use_Money: true
+Use_KIC: true
+Lore_Lines: 4
+Economy_Name: Dollar(s)

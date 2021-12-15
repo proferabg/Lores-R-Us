@@ -1,0 +1,13 @@
+name : Lores-R-Us
+version : 1.3
+api-version: 1.18
+authors: [proferabg]
+description: Just another lore plugin...
+main: com.probgtech.lru.LoresRUs
+depend:
+  - NetSync
+  - Vault
+commands:
+  lore:
+    description: Just another lore command
+    aliases: [lru, loresrus, lrus, lores]
